@@ -14,7 +14,9 @@ function request(): void {
         $id = $_GET['id'] ?? null;
 
         // Llamamos al método
-        $resultado = $controlador->getById($id);
+        $vehiculo = $controlador->getById((int)$id);
+
+        include __DIR__ . '/../app/Views/vehiculo_get.php'; // Incluimos la vista
     } else if ($method === 'POST') {
         // Recogemos el JSON del formulario
         $json = $_POST['jsonPost'] ?? null;

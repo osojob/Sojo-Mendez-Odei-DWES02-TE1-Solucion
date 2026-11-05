@@ -1,4 +1,7 @@
 <?php
+
+namespace App\Models; // Definimos el namespace del modelo
+
 // Creamos la clase Vehiculo, que las otras dos clases heredarán
 class Vehiculo {
     // Atributos
