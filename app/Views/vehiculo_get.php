@@ -2,7 +2,7 @@
 
 // Comprobamos si se ha encontrado o no el vehículo, para mostrar los datos
 if ($vehiculo === null) {
-    echo "<p>No se ha encontrado un vehículo con ese ID.</p>";
+    echo "<p>No se ha encontrado un vehículo.</p>";
 } else {
     // Si se encuentran, mostramos los datos con los getters
     echo "ID: " . $vehiculo->getId() . "<br>";

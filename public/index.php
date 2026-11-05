@@ -25,7 +25,7 @@ function request(): void {
         $datos = json_decode($json, true);
 
         // Llamamos al método
-        $resultado = $controlador->store($datos);
+        $controlador->store($datos);
     }
 }
 
