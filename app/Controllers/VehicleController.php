@@ -8,12 +8,40 @@ use App\Models\Moto; // Importamos el modelo Moto
 class VehicleController {
     
     public function store($vehiculoData): ?Vehiculo {
+        $vehiculos = $this->leerVehiculos(); // Cargamos vehiculos
+
+        // Creamos el nuevo objeton según el tipo
+        if ($vehiculoData['tipo'] === 'coche') {
+            $nuevo = new Coche(
+                $vehiculoData['id'],
+                $vehiculoData['marca'],
+                $vehiculoData['modelo'],
+                $vehiculoData['anio'],
+                $vehiculoData['tipo'],
+                $vehiculoData['puertas']
+            );
+        } else if ($vehiculoData['tipo'] === 'moto') {
+            $nuevo = new Moto(
+                $vehiculoData['id'],
+                $vehiculoData['marca'],
+                $vehiculoData['modelo'],
+                $vehiculoData['anio'],
+                $vehiculoData['tipo'],
+                $vehiculoData['sidecar']
+            );
+        } else {
+            return null; // Si el tipo no es válido, devuelve null
+        }
+
+        $vehiculos[] = $nuevo; // Añadimos el nuevo vehículo al array  
         
-        return null;       
+        include __DIR__ . '/../Views/vehiculo_post.php'; // Incluimos la vista para mostrar el resultado
+
+        return $nuevo; // Devolvemos el nuevo vehículo
     }
 
     public function getById($id): ?Vehiculo {
-        $vehiculos = $this->leerVehiculos(); // Llamamos al método para leer los vehículos
+        $vehiculos = $this->leerVehiculos(); // Cargamos vehiculos
 
         // Recorremos el array de vehículos
         foreach($vehiculos as $vehiculo) {
